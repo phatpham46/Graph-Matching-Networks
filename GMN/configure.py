@@ -3,8 +3,8 @@ def get_default_config():
     model_type = 'matching'
     # Set to `embedding` to use the graph embedding net.
     node_state_dim = 32
-    edge_state_dim = 16
-    graph_rep_dim = 128
+    edge_state_dim = 16 # FIXED FROM THE PAPER
+    graph_rep_dim = 128 # FIXED FROM THE PAPER
     graph_embedding_net_config = dict(
         node_state_dim=node_state_dim,
         edge_state_dim=edge_state_dim,
@@ -47,8 +47,8 @@ def get_default_config():
             problem='graph_edit_distance',
             dataset_params=dict(
                 # always generate graphs with 20 nodes and p_edge=0.2.
-                n_nodes_range=[20, 20],
-                p_edge_range=[0.2, 0.2],
+                n_nodes_range=[20, 20], # TRY MANY DIFFERENT RANGE ACCORDING TO THE 
+                p_edge_range=[0.5, 0.5],
                 n_changes_positive=1,
                 n_changes_negative=2,
                 validation_dataset_size=1000)),
@@ -56,7 +56,7 @@ def get_default_config():
             batch_size=20,
             learning_rate=1e-4,
             mode='pair',
-            loss='margin',  # other: hamming
+            loss='hamming',  # other: hamming # WE FIXED THIS
             margin=1.0,
             # A small regularizer on the graph vector scales to avoid the graph
             # vectors blowing up.  If numerical issues is particularly bad in the
