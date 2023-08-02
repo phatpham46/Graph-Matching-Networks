@@ -54,7 +54,7 @@ def get_default_config():
                 validation_dataset_size=1000)),
         training=dict(
             batch_size=20,
-            learning_rate=1e-4,
+            learning_rate=1e-3,
             mode='pair',
             loss='hamming',  # other: hamming # WE FIXED THIS
             margin=1.0,
@@ -67,7 +67,7 @@ def get_default_config():
             # Add gradient clipping to avoid large gradients.
             clip_value=10.0,
             # Increase this to train longer.
-            n_training_steps=500000,
+            n_training_steps=100000,
             # Print training information every this many training steps.
             print_after=100,
             # Evaluate on validation set every `eval_after * print_after` steps.
