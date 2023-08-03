@@ -47,8 +47,8 @@ def get_default_config():
             problem='graph_edit_distance',
             dataset_params=dict(
                 # always generate graphs with 20 nodes and p_edge=0.2.
-                n_nodes_range=[20, 20], # TRY MANY DIFFERENT RANGE ACCORDING TO THE 
-                p_edge_range=[0.5, 0.5],
+                n_nodes_range=[50, 50], # TRY MANY DIFFERENT RANGE ACCORDING TO THE 
+                p_edge_range=[0.2, 0.2],
                 n_changes_positive=1,
                 n_changes_negative=2,
                 validation_dataset_size=1000)),
