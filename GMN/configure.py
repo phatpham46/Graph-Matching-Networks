@@ -1,6 +1,6 @@
 def get_default_config():
     """The default configs."""
-    model_type = 'matching'
+    model_type = 'embedding'
     # Set to `embedding` to use the graph embedding net.
     node_state_dim = 32
     edge_state_dim = 16 # FIXED FROM THE PAPER
