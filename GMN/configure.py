@@ -1,6 +1,6 @@
 def get_default_config():
     """The default configs."""
-    model_type = 'embedding'
+    model_type = 'matching'
     # Set to `embedding` to use the graph embedding net.
     node_state_dim = 32
     edge_state_dim = 16 # FIXED FROM THE PAPER
@@ -24,7 +24,7 @@ def get_default_config():
         # set to True if your graph is directed
         reverse_dir_param_different=False,
         # we didn't use layer norm in our experiments but sometimes this can help.
-        layer_norm=True,
+        layer_norm=False,
         # set to `embedding` to use the graph embedding net.
         prop_type=model_type)
     graph_matching_net_config = graph_embedding_net_config.copy()
@@ -48,14 +48,14 @@ def get_default_config():
             dataset_params=dict(
                 # always generate graphs with 20 nodes and p_edge=0.2.
                 n_nodes_range=[20, 20], # TRY MANY DIFFERENT RANGE ACCORDING TO THE 
-                p_edge_range=[0.5, 0.5],
+                p_edge_range=[0.2, 0.2],
                 n_changes_positive=1,
                 n_changes_negative=2,
                 validation_dataset_size=1000)),
         training=dict(
             batch_size=20,
-            learning_rate=1e-3,
-            mode='pair',
+            learning_rate=1e-4,
+            mode='triplet',
             loss='hamming',  # other: hamming # WE FIXED THIS
             margin=1.0,
             # A small regularizer on the graph vector scales to avoid the graph
@@ -67,7 +67,7 @@ def get_default_config():
             # Add gradient clipping to avoid large gradients.
             clip_value=10.0,
             # Increase this to train longer.
-            n_training_steps=100000,
+            n_training_steps=500000,
             # Print training information every this many training steps.
             print_after=100,
             # Evaluate on validation set every `eval_after * print_after` steps.

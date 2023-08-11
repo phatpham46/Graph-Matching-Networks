@@ -172,7 +172,7 @@ class GraphPropLayer(nn.Module):
         self.build_model()
 
         if self._layer_norm:
-            self.layer_norm1 = nn.LayerNorm()
+            self.layer_norm1 = nn.LayerNorm(normalized_shape=self._edge_hidden_sizes[-1])
             self.layer_norm2 = nn.LayerNorm()
 
     def build_model(self):
