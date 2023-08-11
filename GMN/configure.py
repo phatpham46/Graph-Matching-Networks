@@ -55,7 +55,7 @@ def get_default_config():
         training=dict(
             batch_size=20,
             learning_rate=1e-3,
-            mode='pair',
+            mode='triplet',
             loss='hamming',  # other: hamming # WE FIXED THIS
             margin=1.0,
             # A small regularizer on the graph vector scales to avoid the graph
