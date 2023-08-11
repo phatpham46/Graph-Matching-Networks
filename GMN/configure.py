@@ -24,7 +24,7 @@ def get_default_config():
         # set to True if your graph is directed
         reverse_dir_param_different=False,
         # we didn't use layer norm in our experiments but sometimes this can help.
-        layer_norm=False,
+        layer_norm=True,
         # set to `embedding` to use the graph embedding net.
         prop_type=model_type)
     graph_matching_net_config = graph_embedding_net_config.copy()
@@ -55,7 +55,7 @@ def get_default_config():
         training=dict(
             batch_size=20,
             learning_rate=1e-3,
-            mode='triplet',
+            mode='pair',
             loss='hamming',  # other: hamming # WE FIXED THIS
             margin=1.0,
             # A small regularizer on the graph vector scales to avoid the graph
